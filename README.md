@@ -1,2 +1,2 @@
-# WatchaProejct
+# WatchaProject
 왓챠 앱
