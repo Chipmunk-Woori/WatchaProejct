@@ -49,7 +49,6 @@ const MyPageScreen = ({navigation}) => {
 
   useEffect(() => {
     setReload(!reload);
-    console.log('배우리코인도 곧 최영민처럼됨');
   }, [movielist]);
 
   const renderScene = SceneMap({
@@ -118,13 +117,18 @@ const MyPageScreen = ({navigation}) => {
         </View>
       </View>
       <View style={{alignItems: 'center'}}>
-        <View style={styles.profileChangeView}>
-          <Image
-            source={require('../asset/pen.png')}
-            style={styles.profileChangeViewImage}
-          />
-          <Text style={{color: 'white'}}>프로필 수정</Text>
-        </View>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('EditProfileChoice');
+          }}>
+          <View style={styles.profileChangeView}>
+            <Image
+              source={require('../asset/pen.png')}
+              style={styles.profileChangeViewImage}
+            />
+            <Text style={{color: 'white'}}>프로필 수정</Text>
+          </View>
+        </TouchableOpacity>
       </View>
       <View style={styles.line}></View>
       <TabView

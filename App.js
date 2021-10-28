@@ -31,8 +31,18 @@ import ReviewScreen from './Screen/Review';
 import SecondRoute from './Screen/SecondRoute';
 import ThirdRoute from './Screen/ThirdRoute';
 
+import Recommendation from './Screen/Recommendation';
+import MovieDetailScreen from './Screen/MovieDetailScreen';
+
 import ThirdRoute_delete from './Screen/ThirdRoute_delete';
 import MovielistStore from './Store/MovielistStore';
+import {MovieDetailStore} from './Store/MovieDetailStore';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+
+import EditProfileChoice from './Screen/EditProfileChoice';
+import EditProfile from './Screen/EditProfile';
+import {UserStore} from './Store/UserStore';
+
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -57,16 +67,72 @@ const App = () => {
     );
   };
 
+  const categoryNavigator = () => {
+    return (
+      <MovieDetailStore>
+        <Stack.Navigator
+          screenOptions={{
+            cardStyle: {backgroundColor: 'black'},
+          }}>
+          <Stack.Screen
+            options={{headerShown: false}}
+            name="카테고리"
+            component={CategoryScreen}
+          />
+          <Stack.Screen
+            name="Recommendation"
+            component={Recommendation}
+            options={{
+              headerTitle: () => {
+                // ↑ 헤더 글
+                return (
+                  <Text
+                    style={{
+                      color: 'white',
+                      fontWeight: 'bold',
+                      fontSize: 20,
+                    }}>
+                    이번주의 발견
+                  </Text>
+                );
+              },
+              headerStyle: {
+                backgroundColor: 'black',
+                // ↑ 헤더 배경 색
+              },
+              headerTintColor: 'white',
+              // ↑ 헤더 back button 화살표 색상
+            }}
+          />
+          <Stack.Screen
+            name="MovieDetailScreen"
+            component={MovieDetailScreen}
+          />
+        </Stack.Navigator>
+      </MovieDetailStore>
+    );
+  };
+
   const MyPageNavigator = () => {
     return (
-      <Stack.Navigator
-        screenOptions={{
-          headerShown: false,
-          cardStyle: {backgroundColor: 'black'},
-        }}>
-        <Stack.Screen name="MyPageScreen" component={MyPageScreen} />
-        <Stack.Screen name="ThirdRoute_delete" component={ThirdRoute_delete} />
-      </Stack.Navigator>
+      <UserStore>
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: false,
+            cardStyle: {backgroundColor: 'black'},
+          }}>
+          <Stack.Screen name="MyPageScreen" component={MyPageScreen} />
+          <Stack.Screen
+            name="ThirdRoute_delete"
+            component={ThirdRoute_delete}
+          />
+          <Stack.Screen
+            name="EditProfileChoice"
+            component={EditProfileChoice}
+          />
+          <Stack.Screen name="EditProfile" component={EditProfile} />
+        </Stack.Navigator>
+      </UserStore>
     );
   };
 
@@ -97,7 +163,7 @@ const App = () => {
 
           <Tab.Screen
             name="카테고리"
-            component={CategoryScreen}
+            component={categoryNavigator}
             options={({route}) => ({
               tabBarIcon: ({focused}) => (
                 <Image
