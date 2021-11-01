@@ -14,7 +14,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
-import {isRequired} from 'react-native/Libraries/DeprecatedPropTypes/DeprecatedColorPropType';
+
 import ThirdRoute from './ThirdRoute';
 import {createContext} from 'react';
 import {StoreContext} from '../Store/MovielistStore';

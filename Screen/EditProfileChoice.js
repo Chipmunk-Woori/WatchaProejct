@@ -16,7 +16,7 @@ const EditProfileChoice = ({navigation}) => {
   useEffect(() => {
     console.log(editedName);
     console.log(userInformation);
-  }, []);
+  }, [editedName]);
 
   const userImage = () => {
     return (

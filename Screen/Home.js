@@ -240,5 +240,11 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 12,
   },
+
+  testTemp: {
+    color: 'white',
+    marginTop: 20,
+    fontSize: 20,
+  },
 });
 export default HomeScreen;

@@ -90,22 +90,19 @@ const ReviewScreen = ({navigation}, props) => {
       <View
         style={{
           marginTop: 30,
+          marginLeft: 10,
           flexDirection: 'row',
         }}>
         <Image
-          source={require('../asset/rectangle.png')}
-          style={{width: 75, height: 75}}
+          source={require('../asset/poster_11.png')}
+          style={{width: 60, height: 95, marginRight: 12}}
         />
         <View>
-          <Text style={{color: 'white'}}>김과장</Text>
+          <Text style={{color: 'white'}}>듄</Text>
 
-          <Text style={{color: 'gray'}}>2017</Text>
-          <View style={{flexDirection: 'row'}}>
-            <CustomRatingBar />
-            <Text style={styles.textStyle}>
-              {defaultRating + ' / ' + maxRating.length}
-            </Text>
-          </View>
+          <Text style={{color: 'gray'}}>2021</Text>
+
+          <CustomRatingBar />
         </View>
         <View
           style={{
@@ -195,14 +192,12 @@ const styles = StyleSheet.create({
     backgroundColor: 'red',
   },
   CustomRatingBarStyle: {
-    justifyContent: 'center',
     flexDirection: 'row',
-    marginTop: 30,
+    marginTop: 8,
   },
   starImgStyle: {
     width: 40,
     height: 40,
-    resizeMode: 'cover',
   },
   textStyle: {
     textAlign: 'center',

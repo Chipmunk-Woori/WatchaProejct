@@ -115,7 +115,7 @@ const Recommendation = ({navigation}) => {
     return (
       <View>
         <View style={styles.topView}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          {/* <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <TouchableOpacity
               onPress={() => {
                 navigation.goBack();
@@ -134,15 +134,8 @@ const Recommendation = ({navigation}) => {
               }}>
               이번주의 발견
             </Text>
-          </View>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('MovieDetailScreen');
-            }}>
-            <Text style={{color: 'white', marginTop: 25, marginBottom: 10}}>
-              버튼 : MovieDetailScreen 으로 이동
-            </Text>
-          </TouchableOpacity>
+          </View> */}
+
           <Text style={styles.topTitle}>{topTitle}</Text>
           <Text style={styles.topDay}>{topDay}</Text>
           <Text style={styles.topSubText}>{topSubText}</Text>
@@ -160,17 +153,6 @@ const Recommendation = ({navigation}) => {
     );
   };
 
-  const getFooter = () => {
-    return (
-      <View>
-        <Text style={{color: 'white', fontSize: 50}}> test </Text>
-        <Text style={{color: 'white', fontSize: 50}}> test </Text>
-        <Text style={{color: 'white', fontSize: 50}}> test </Text>
-        <Text style={{color: 'white', fontSize: 50}}> test </Text>
-      </View>
-    );
-  };
-
   return (
     <View>
       <View style={{width: '100%', height: 600}}>
@@ -178,20 +160,26 @@ const Recommendation = ({navigation}) => {
           data={dataList}
           keyExtractor={item => item.id}
           ListHeaderComponent={getHeader}
-          ListFooterComponent={getFooter}
-          renderItem={({item}) => {
+          renderItem={({item, index}) => {
             return (
               <View key={item.id} style={{marginBottom: 15}}>
                 <View style={styles.flatListView}>
-                  <Image
-                    style={{width: '100%', height: 170, marginBottom: 10}}
-                    source={item.img}
-                  />
-                  <Text style={styles.flatListTitle}>{item.title}</Text>
-                  <Text style={styles.flatListstarRate}>{item.starRate}</Text>
-                  <Text style={styles.flatListexplanation}>
-                    {item.explanation}
-                  </Text>
+                  <TouchableOpacity
+                    onPress={() => {
+                      if (index == 0) {
+                        navigation.navigate('MovieDetailScreen');
+                      }
+                    }}>
+                    <Image
+                      style={{width: '100%', height: 170, marginBottom: 10}}
+                      source={item.img}
+                    />
+                    <Text style={styles.flatListTitle}>{item.title}</Text>
+                    <Text style={styles.flatListstarRate}>{item.starRate}</Text>
+                    <Text style={styles.flatListexplanation}>
+                      {item.explanation}
+                    </Text>
+                  </TouchableOpacity>
                 </View>
 
                 <View style={styles.flatListViewGray}>
@@ -225,9 +213,10 @@ const styles = StyleSheet.create({
   topView: {
     marginLeft: 12,
     marginRight: 40,
-    marginBottom: 48,
+    marginBottom: 10,
+    marginTop: 20,
     overflow: 'scroll',
-    height: 170,
+    height: 150,
   },
   topTitle: {
     fontSize: 29,

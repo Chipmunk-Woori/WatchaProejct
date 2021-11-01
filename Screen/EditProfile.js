@@ -25,7 +25,7 @@ const EditProfile = ({route, navigation}) => {
     // ↑ 이제 editedName 이 공유된 값 역할
 
     setName1(userInformation.length > 0 && userInformation[0].name);
-  }, [isFocused]);
+  }, []);
 
   return (
     <View>
@@ -67,15 +67,6 @@ const EditProfile = ({route, navigation}) => {
           수정한 정보는 왓챠의 다른 서비스에서도 동일하게
         </Text>
         <Text style={styles.guideText}>표시됩니다</Text>
-      </View>
-
-      <View style={{alignItems: 'center'}}>
-        <TouchableOpacity
-          onPress={() => {
-            console.log(userInformation);
-          }}>
-          <Text style={{color: 'white', marginTop: 60}}>console버튼</Text>
-        </TouchableOpacity>
       </View>
     </View>
   );
